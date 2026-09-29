@@ -1,0 +1,53 @@
+.root {
+    -fx-font-family: Arial;
+    -fx-font-size: 13px;
+    -fx-background-color: #eeeeee;
+}
+
+.header {
+    -fx-background-color: #3f51b5;
+}
+
+.eyebrow, .subtitle {
+    -fx-text-fill: white;
+}
+
+.title {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.titled-pane > .title {
+    -fx-font-weight: bold;
+}
+
+.text-field, .date-picker {
+    -fx-pref-height: 30px;
+}
+
+.primary-button {
+    -fx-background-color: #3f51b5;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 14px;
+}
+
+.total-label {
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+
+.total-field {
+    -fx-pref-width: 140px;
+    -fx-font-weight: bold;
+}
+
+.table-view {
+    -fx-background-color: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: #d9def5;
+    -fx-font-weight: bold;
+}
