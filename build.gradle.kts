@@ -23,7 +23,7 @@ tasks.withType<JavaCompile> {
 
 application {
     mainModule.set("org.example.pw5labs")
-    mainClass.set("org.example.pw5labs.HelloApplication")
+    mainClass.set("org.example.pw5labs.MainController")
 }
 kotlin {
     jvmToolchain(17)

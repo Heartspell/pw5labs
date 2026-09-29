@@ -33,7 +33,7 @@
         <TextField fx:id="workDaysField" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
         <Label text="Дата выплаты" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
         <DatePicker fx:id="dateField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-        <Button fx:id="countButton" text="Рассчитать" onAction="#countSalaries" styleClass="primary-button" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+        <Button text="Рассчитать" onAction="#countSalaries" styleClass="primary-button" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
     </GridPane>
 
     <HBox spacing="8">
