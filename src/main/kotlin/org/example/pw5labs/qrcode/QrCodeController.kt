@@ -3,10 +3,10 @@ package org.example.pw5labs.qrcode
 import javafx.embed.swing.SwingFXUtils
 import javafx.fxml.FXML
 import javafx.scene.control.TextField
-import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import org.example.pw5labs.common.ErrorWindow
 import java.awt.Color
+import java.awt.Desktop
 import java.awt.Graphics2D
 import java.awt.image.BufferedImage
 import java.io.File
@@ -21,11 +21,11 @@ class QrCodeController {
     private fun createQrCode() {
         val value = initialField1.text.trim()
         if (value.isEmpty()) {
-            ErrorWindow().show("Генератор штрих-кода", "Введите текст для штрих-кода")
+            ErrorWindow().show("Barcode Generator", "Enter text to encode")
             return
         }
         if (value.any { it.code !in 32..126 }) {
-            ErrorWindow().show("Генератор штрих-кода", "Code 128 поддерживает латинские символы и цифры")
+            ErrorWindow().show("Barcode Generator", "Code 128 supports Latin characters and digits")
             return
         }
 
@@ -36,25 +36,28 @@ class QrCodeController {
             qrCodeImage.image = SwingFXUtils.toFXImage(ImageIO.read(file), null)
             initialField2.text = file.nameWithoutExtension
         } catch (error: Exception) {
-            ErrorWindow().show("Генератор штрих-кода", error.message ?: "Не удалось создать штрих-код")
+            ErrorWindow().show("Barcode Generator", error.message ?: "Unable to create the barcode")
         }
     }
 
     @FXML
-    private fun showQrCode() {
+    private fun openBarcodeFolder() {
         try {
-            val file = barcodeFile()
-            require(file.isFile) { "Файл ${file.name} не найден в папке generated-barcodes" }
-            qrCodeImage.image = Image(file.toURI().toString())
+            val folder = File("generated-barcodes").absoluteFile
+            folder.mkdirs()
+            require(Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.OPEN)) {
+                "Opening folders is not supported on this system"
+            }
+            Desktop.getDesktop().open(folder)
         } catch (error: Exception) {
-            ErrorWindow().show("Генератор штрих-кода", error.message ?: "Не удалось открыть штрих-код")
+            ErrorWindow().show("Barcode Generator", error.message ?: "Unable to open the generated-barcodes folder")
         }
     }
 
     private fun barcodeFile(): File {
         val name = initialField2.text.trim().ifEmpty { initialField1.text.trim() }
         require(name.matches(Regex("[A-Za-z0-9_-]+"))) {
-            "Название файла должно содержать только латинские буквы, цифры, _ или -"
+            "The file name may contain only Latin letters, digits, _ or -"
         }
         return File("generated-barcodes", "$name.png")
     }
@@ -70,16 +73,22 @@ class QrCodeController {
         val scale = 3
         val quietZone = 10
         val moduleWidth = codes.sumOf { CODE_PATTERNS[it].sumOf(Char::digitToInt) }
-        val image = BufferedImage((moduleWidth + quietZone * 2) * scale, 180, BufferedImage.TYPE_INT_RGB)
+        val image = BufferedImage((moduleWidth + quietZone * 2) * scale, 220, BufferedImage.TYPE_INT_RGB)
         val graphics = image.createGraphics()
-        drawBarcode(graphics, codes, scale, quietZone)
+        drawBarcode(graphics, codes, scale, quietZone, value)
         graphics.dispose()
         return image
     }
 
-    private fun drawBarcode(graphics: Graphics2D, codes: List<Int>, scale: Int, quietZone: Int) {
+    private fun drawBarcode(
+        graphics: Graphics2D,
+        codes: List<Int>,
+        scale: Int,
+        quietZone: Int,
+        value: String
+    ) {
         graphics.color = Color.WHITE
-        graphics.fillRect(0, 0, graphics.deviceConfiguration.bounds.width, 180)
+        graphics.fillRect(0, 0, graphics.deviceConfiguration.bounds.width, 220)
         graphics.color = Color.BLACK
         var x = quietZone * scale
         codes.forEach { code ->
@@ -89,6 +98,12 @@ class QrCodeController {
                 x += width
             }
         }
+
+        // Human-readable value below the barcode.
+        graphics.font = graphics.font.deriveFont(18f)
+        val textWidth = graphics.fontMetrics.stringWidth(value)
+        val imageWidth = (codes.sumOf { CODE_PATTERNS[it].sumOf(Char::digitToInt) } + quietZone * 2) * scale
+        graphics.drawString(value, (imageWidth - textWidth) / 2, 185)
     }
 
     private companion object {

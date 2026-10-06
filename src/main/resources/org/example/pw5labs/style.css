@@ -5,7 +5,7 @@
 }
 
 .header {
-    -fx-background-color: #3f51b5;
+    -fx-background-color: #5e5e5e;
 }
 
 .header .title {
@@ -22,11 +22,6 @@
 
 .launcher-title {
     -fx-font-size: 26px;
-}
-
-.launcher-subtitle {
-    -fx-font-size: 15px;
-    -fx-text-fill: #555555;
 }
 
 .text-field,

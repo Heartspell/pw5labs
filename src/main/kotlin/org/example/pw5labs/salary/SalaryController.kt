@@ -50,7 +50,7 @@ class SalaryController {
             filterDateField.value = dateField.value
             loadPayments(filterDateField.value)
         } catch (error: Exception) {
-            ErrorWindow().show("Расчёт зарплаты", error.message ?: "Не удалось рассчитать зарплаты")
+            ErrorWindow().show("Salary Calculation", error.message ?: "Unable to calculate salaries")
         }
     }
 
@@ -105,7 +105,7 @@ class SalaryController {
         } catch (error: Exception) {
             paymentsTable.items = FXCollections.observableArrayList()
             totalPaidField.text = Money.format(0.0)
-            ErrorWindow().show("Подключение к PostgreSQL", "Запустите Docker: docker compose up -d\n\n${error.message}")
+            ErrorWindow().show("PostgreSQL Connection", "Start Docker: docker compose up -d\n\n${error.message}")
         }
     }
 }

@@ -9,17 +9,17 @@ import javafx.stage.Stage
 class LauncherController {
     @FXML
     private fun openSalaryCalculator() {
-        openWindow("/org/example/pw5labs/salary/salaries.fxml", "Расчёт заработной платы", 1280.0, 760.0)
+        openWindow("/org/example/pw5labs/salary/salaries.fxml", "Salary Calculator", 1280.0, 760.0)
     }
 
     @FXML
     private fun openCipher() {
-        openWindow("/org/example/pw5labs/cipher/cipher.fxml", "Шифрование текста", 760.0, 620.0)
+        openWindow("/org/example/pw5labs/cipher/cipher.fxml", "Text Encryption", 760.0, 620.0)
     }
 
     @FXML
     private fun openBarcode() {
-        openWindow("/org/example/pw5labs/qrcode/qrcode.fxml", "Генератор штрих-кода", 780.0, 650.0)
+        openWindow("/org/example/pw5labs/qrcode/qrcode.fxml", "Barcode Generator", 780.0, 650.0)
     }
 
     private fun openWindow(resource: String, title: String, width: Double, height: Double) {
@@ -31,7 +31,7 @@ class LauncherController {
                 show()
             }
         } catch (error: Exception) {
-            ErrorWindow().show("Запуск приложения", error.message ?: "Не удалось открыть окно")
+            ErrorWindow().show("Application Launch", error.message ?: "Unable to open the window")
         }
     }
 }

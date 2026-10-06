@@ -34,7 +34,7 @@ class CipherController {
     private fun transformWithEnteredKey(direction: Int) {
         val key = keyField.text.toIntOrNull()
         if (key == null) {
-            ErrorWindow().show("Шифр Цезаря", "Введите целое число в поле «Ключ»")
+            ErrorWindow().show("Caesar Cipher", "Enter an integer in the Key field")
             return
         }
         resultField2.text = applyCaesar(startField2.text, direction * key)

@@ -13,12 +13,12 @@
     <padding>
         <Insets top="18" right="18" bottom="18" left="18"/>
     </padding>
-    <Label text="Генератор штрих-кода Code 128" styleClass="section-title"/>
-    <Label text="Текст для кодирования"/>
-    <TextField fx:id="initialField1" promptText="Например: PRODUCT-001"/>
-    <Button text="Создать штрих-код" onAction="#createQrCode" styleClass="primary-button"/>
-    <Label text="Название файла"/>
-    <TextField fx:id="initialField2" promptText="Например: product-001"/>
-    <Button text="Прочитать штрих-код" onAction="#showQrCode"/>
+    <Label text="Code 128 Barcode Generator" styleClass="section-title"/>
+    <Label text="Text to Encode"/>
+    <TextField fx:id="initialField1" promptText="For example: PRODUCT-001"/>
+    <Button text="Create Barcode" onAction="#createQrCode" styleClass="primary-button"/>
+    <Label text="File Name"/>
+    <TextField fx:id="initialField2" promptText="For example: product-001"/>
+    <Button text="Open Folder" onAction="#openBarcodeFolder"/>
     <ImageView fx:id="qrCodeImage" fitWidth="720" fitHeight="260" preserveRatio="true" VBox.vgrow="ALWAYS"/>
 </VBox>

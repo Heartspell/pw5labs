@@ -11,12 +11,11 @@
     <padding>
         <Insets top="28" right="28" bottom="28" left="28"/>
     </padding>
-    <Label text="Учебные приложения" styleClass="launcher-title"/>
-    <Label text="Выберите нужный раздел" styleClass="launcher-subtitle"/>
-    <Button text="Расчёт заработной платы" onAction="#openSalaryCalculator"
+    <Label text="PW5 labs" styleClass="launcher-title"/>
+    <Button text="Salary Calculator" onAction="#openSalaryCalculator"
             styleClass="primary-button" maxWidth="300" prefHeight="44"/>
-    <Button text="Фиксированный шифр и шифр Цезаря" onAction="#openCipher"
+    <Button text="Fixed Cipher and Caesar Cipher" onAction="#openCipher"
             styleClass="primary-button" maxWidth="300" prefHeight="44"/>
-    <Button text="Генератор штрих-кода" onAction="#openBarcode"
+    <Button text="Barcode Generator" onAction="#openBarcode"
             styleClass="primary-button" maxWidth="300" prefHeight="44"/>
 </VBox>

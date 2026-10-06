@@ -13,52 +13,52 @@
 
     <VBox styleClass="header" spacing="4">
         <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
-        <Label text="Расчёт заработной платы" styleClass="title"/>
+        <Label text="Salary Calculator" styleClass="title"/>
     </VBox>
 
     <GridPane hgap="8" vgap="8">
-        <Label text="Премия, %" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Label text="Bonus, %" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
         <TextField fx:id="benefitMoneyField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-        <Label text="Подоходный налог, %" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+        <Label text="Income Tax, %" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
         <TextField fx:id="profitTaxField" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
-        <Label text="Профсоюзный взнос, %" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <Label text="Union Fee, %" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
         <TextField fx:id="profTaxField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-        <Label text="Социальный фонд, %" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+        <Label text="Social Fund, %" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
         <TextField fx:id="retirementTaxField" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
-        <Label text="Календарных дней" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <Label text="Calendar Days" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
         <TextField fx:id="calendarDaysField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-        <Label text="Рабочих дней" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+        <Label text="Working Days" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
         <TextField fx:id="workDaysField" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
-        <Label text="Дата выплаты" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <Label text="Payment Date" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
         <DatePicker fx:id="dateField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-        <Button text="Рассчитать" onAction="#countSalaries" styleClass="primary-button" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+        <Button text="Calculate" onAction="#countSalaries" styleClass="primary-button" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
     </GridPane>
 
     <HBox spacing="8">
-        <Label text="Всего выплачено:" styleClass="total-label"/>
+        <Label text="Total Paid:" styleClass="total-label"/>
         <TextField fx:id="totalPaidField" editable="false" styleClass="total-field"/>
     </HBox>
 
     <HBox spacing="8" alignment="CENTER_LEFT">
-        <Label text="Просмотр выплат за день:" styleClass="total-label"/>
+        <Label text="View Payments by Day:" styleClass="total-label"/>
         <Button text="‹" onAction="#showPreviousDay"/>
         <DatePicker fx:id="filterDateField" editable="false"/>
         <Button text="›" onAction="#showNextDay"/>
-        <Button text="Сегодня" onAction="#showToday"/>
-        <Button text="Показать" onAction="#showPaymentsForSelectedDay" styleClass="primary-button"/>
+        <Button text="Today" onAction="#showToday"/>
+        <Button text="Show" onAction="#showPaymentsForSelectedDay" styleClass="primary-button"/>
     </HBox>
 
     <TableView fx:id="paymentsTable" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn fx:id="idColumn" text="№" prefWidth="45"/>
-            <TableColumn fx:id="nameColumn" text="ФИО" prefWidth="170"/>
-            <TableColumn fx:id="cityColumn" text="Город" prefWidth="100"/>
-            <TableColumn fx:id="phoneColumn" text="Телефон" prefWidth="125"/>
-            <TableColumn fx:id="positionColumn" text="Должность" prefWidth="150"/>
-            <TableColumn fx:id="salaryColumn" text="Оклад" prefWidth="100"/>
-            <TableColumn fx:id="taxColumn" text="Налоги, %" prefWidth="90"/>
-            <TableColumn fx:id="dateColumn" text="Дата" prefWidth="105"/>
-            <TableColumn fx:id="totalColumn" text="К выплате" prefWidth="115"/>
+            <TableColumn fx:id="nameColumn" text="Full Name" prefWidth="170"/>
+            <TableColumn fx:id="cityColumn" text="City" prefWidth="100"/>
+            <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="125"/>
+            <TableColumn fx:id="positionColumn" text="Position" prefWidth="150"/>
+            <TableColumn fx:id="salaryColumn" text="Salary" prefWidth="100"/>
+            <TableColumn fx:id="taxColumn" text="Taxes, %" prefWidth="90"/>
+            <TableColumn fx:id="dateColumn" text="Date" prefWidth="105"/>
+            <TableColumn fx:id="totalColumn" text="Net Pay" prefWidth="115"/>
         </columns>
     </TableView>
 </VBox>

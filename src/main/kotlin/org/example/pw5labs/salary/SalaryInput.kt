@@ -17,19 +17,19 @@ data class SalaryInput(
             retirementTax: String, calendarDays: String, workDays: String,
             date: LocalDate?
         ) = SalaryInput(
-            percent(benefit, "Премия"), percent(profitTax, "Подоходный налог"),
-            percent(profTax, "Профсоюзный взнос"), percent(retirementTax, "Социальный фонд"),
-            calendarDays.toIntOrNull() ?: error("Календарные дни должны быть целым числом"),
-            workDays.toIntOrNull() ?: error("Рабочие дни должны быть целым числом"),
-            date ?: error("Выберите дату выплаты")
+            percent(benefit, "Bonus"), percent(profitTax, "Income tax"),
+            percent(profTax, "Union fee"), percent(retirementTax, "Social fund"),
+            calendarDays.toIntOrNull() ?: error("Calendar days must be a whole number"),
+            workDays.toIntOrNull() ?: error("Working days must be a whole number"),
+            date ?: error("Select a payment date")
         ).also {
-            require(it.calendarDays > 0) { "Количество календарных дней должно быть больше нуля" }
-            require(it.workDays in 0..it.calendarDays) { "Рабочих дней не может быть больше календарных" }
-            require(it.profitTax + it.profTax + it.retirementTax <= 100) { "Сумма налогов не может быть больше 100%" }
+            require(it.calendarDays > 0) { "Calendar days must be greater than zero" }
+            require(it.workDays in 0..it.calendarDays) { "Working days cannot exceed calendar days" }
+            require(it.profitTax + it.profTax + it.retirementTax <= 100) { "Total taxes cannot exceed 100%" }
         }
 
         private fun percent(value: String, name: String) = value.replace(',', '.').toDoubleOrNull()?.also {
-            require(it in 0.0..100.0) { "$name должен быть от 0 до 100%" }
-        } ?: error("$name должен быть числом")
+            require(it in 0.0..100.0) { "$name must be between 0 and 100%" }
+        } ?: error("$name must be a number")
     }
 }

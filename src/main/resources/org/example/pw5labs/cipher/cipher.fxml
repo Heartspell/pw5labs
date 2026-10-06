@@ -15,33 +15,33 @@
         <Insets top="18" right="18" bottom="18" left="18"/>
     </padding>
 
-    <Label text="Шифрование текста" styleClass="title"/>
+    <Label text="Text Encryption" styleClass="title"/>
 
-    <TitledPane text="Фиксированный шифр (ключ 3)" expanded="true">
+    <TitledPane text="Fixed Cipher (Key 3)" expanded="true">
         <content>
             <GridPane hgap="10" vgap="10">
                 <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
-                <Label text="Начальный текст" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <TextField fx:id="startField1" promptText="Введите текст" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                <Button text="Зашифровать" onAction="#codeWithoutKey" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="primary-button"/>
-                <Button text="Дешифровать" onAction="#decodeWithoutKey" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                <Label text="Результат" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label text="Input Text" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="startField1" promptText="Enter text" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Button text="Encrypt" onAction="#codeWithoutKey" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="primary-button"/>
+                <Button text="Decrypt" onAction="#decodeWithoutKey" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Result" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
                 <TextField fx:id="resultField1" editable="false" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
             </GridPane>
         </content>
     </TitledPane>
 
-    <TitledPane text="Шифр Цезаря с вводимым ключом" expanded="true">
+    <TitledPane text="Caesar Cipher with Custom Key" expanded="true">
         <content>
             <GridPane hgap="10" vgap="10">
                 <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
-                <Label text="Начальный текст" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <TextField fx:id="startField2" promptText="Введите текст" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                <Label text="Ключ" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                <TextField fx:id="keyField" promptText="Например, 3" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                <Button text="Зашифровать с ключом" onAction="#codeWithKey" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="primary-button"/>
-                <Button text="Дешифровать с ключом" onAction="#decodeWithKey" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-                <Label text="Результат" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label text="Input Text" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="startField2" promptText="Enter text" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Key" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="keyField" promptText="For example, 3" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Button text="Encrypt with Key" onAction="#codeWithKey" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="primary-button"/>
+                <Button text="Decrypt with Key" onAction="#decodeWithKey" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="Result" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
                 <TextField fx:id="resultField2" editable="false" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
             </GridPane>
         </content>
